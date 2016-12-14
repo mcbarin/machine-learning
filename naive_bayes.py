@@ -18,7 +18,7 @@ def feed_machine(images, labels, model):
 
 def predict_labels(images, model):
     image_size = len(images)
-    test_images2d = test_images.reshape(image_size, -1)
+    test_images2d = images.reshape(image_size, -1)
     predicted_results = model.predict(test_images2d)
     print "Predict action is completed."
     return predicted_results
@@ -50,3 +50,11 @@ feed_machine(images, labels, model)  # Feed the model
 predicted_results = predict_labels(test_images, model)  # Predict the test images
 check_results(predicted_results, test_labels)  # Compare predictions with real values.
 
+
+"""
+python naive_bayes.py
+Fit action is completed.
+Predict action is completed.
+Number of images: 10000
+Number of right predictions: 5558
+"""
