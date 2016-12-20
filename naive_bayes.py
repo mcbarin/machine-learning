@@ -1,45 +1,6 @@
-import idx2numpy
 from sklearn.naive_bayes import GaussianNB
 import time
-import numpy
-
-
-def idxtoarray(filename):
-    f_read = open(filename, 'rb')
-    numpy_array = idx2numpy.convert_from_file(f_read)
-    return numpy_array
-
-
-def feed_machine(images, labels, model):
-    image_size = len(images)
-    images2d = images.reshape(image_size, -1)
-    model.fit(images2d.tolist(), labels.tolist())
-    print "Train action is completed."
-
-
-def predict_labels(images, model):
-    image_size = len(images)
-    test_images2d = images.reshape(image_size, -1)
-    predicted_results = model.predict(test_images2d)
-    print "Predict action is completed."
-    return predicted_results
-
-
-def check_results(predicted, answers):
-    predicted_list = predicted.tolist()
-    test_labels_list = answers.tolist()
-    number_of_rights = 0
-    number_of_labels = len(test_labels_list)
-    for index in range(0, number_of_labels):
-        if predicted_list[index] == test_labels_list[index]:
-            number_of_rights += 1
-
-    print "Number of images: %d" % number_of_labels
-    print "Number of right predictions: %d" % number_of_rights
-
-
-def reduce_image_size(image_set):
-    return numpy.array([a[4:-4, 4:-4] for a in image_set])
+from methods import idxtoarray, feed_machine, predict_labels, check_results, reduce_image_size
 
 
 # Train files  idx->numpy array
@@ -71,7 +32,7 @@ print "Prediction execution time:", (end_test-start_test), "seconds"
 
 check_results(predicted_results, test_labels)  # Compare predictions with real values.
 
-
+# RESULTS
 """
 Image file size: 28x28
 
