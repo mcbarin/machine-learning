@@ -3,7 +3,6 @@ from sklearn.naive_bayes import GaussianNB
 
 
 def idxtoarray(filename):
-    numpy_array = idx2numpy.convert_from_file(filename)
     f_read = open(filename, 'rb')
     numpy_array = idx2numpy.convert_from_file(f_read)
     return numpy_array
