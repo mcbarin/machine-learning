@@ -1,6 +1,7 @@
 import idx2numpy
 from sklearn.naive_bayes import GaussianNB
 import time
+import numpy
 
 
 def idxtoarray(filename):
@@ -40,9 +41,14 @@ def check_results(predicted, answers):
 images = idxtoarray('train-images')
 labels = idxtoarray('train-labels')
 
+
 # Test files idx->numpy array
 test_images = idxtoarray('test-images')
 test_labels = idxtoarray('test-labels')
+
+# Turn images into 20x20
+images = numpy.array([a[4:-4, 4:-4] for a in images])
+test_images = numpy.array([a[4:-4, 4:-4] for a in test_images])
 
 model = GaussianNB()  # Gaussian Naive Bayes Classifier
 
@@ -61,6 +67,8 @@ check_results(predicted_results, test_labels)  # Compare predictions with real v
 
 
 """
+Image file size: 28x28
+
 python naive_bayes.py
 Train action is completed.
 Training execution time: 8.29062891006 seconds
@@ -68,4 +76,17 @@ Predict action is completed.
 Prediction execution time: 0.972679853439 seconds
 Number of images: 10000
 Number of right predictions: 5558
+"""
+
+
+"""
+When image file turned into 20x20
+
+python naive_bayes.py
+Train action is completed.
+Training execution time: 3.48154807091 seconds
+Predict action is completed.
+Prediction execution time: 0.496382951736 seconds
+Number of images: 10000
+Number of right predictions: 7470
 """

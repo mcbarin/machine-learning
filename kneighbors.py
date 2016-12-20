@@ -1,6 +1,7 @@
 import idx2numpy
 from sklearn.neighbors import KNeighborsClassifier
 import time
+import numpy
 
 
 def idxtoarray(filename):
@@ -45,6 +46,10 @@ labels = idxtoarray('train-labels')
 test_images = idxtoarray('test-images')
 test_labels = idxtoarray('test-labels')
 
+# Turn images into 20x20
+images = numpy.array([a[4:-4, 4:-4] for a in images])
+test_images = numpy.array([a[4:-4, 4:-4] for a in test_images])
+
 model = KNeighborsClassifier(n_neighbors=3)
 
 start_train = time.time()
@@ -61,6 +66,8 @@ check_results(predicted_results, test_labels)  # Compare predictions with real v
 
 
 """
+Image file size: 28x28
+
 python kneighbors.py
 Train action is completed.
 Training execution time: 71.2463350296  seconds
@@ -68,4 +75,17 @@ Predict action is completed.
 Prediction execution time: 917.52027297 seconds
 Number of images: 10000
 Number of right predictions: 9705
+"""
+
+
+"""
+When image file turned into 20x20
+
+python kneighbors.py
+Train action is completed.
+Training execution time: 34.130147934 seconds
+Predict action is completed.
+Prediction execution time: 458.105105877 seconds
+Number of images: 10000
+Number of right predictions: 9719
 """
