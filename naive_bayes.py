@@ -37,6 +37,11 @@ def check_results(predicted, answers):
     print "Number of images: %d" % number_of_labels
     print "Number of right predictions: %d" % number_of_rights
 
+
+def reduce_image_size(image_set):
+    return numpy.array([a[4:-4, 4:-4] for a in image_set])
+
+
 # Train files  idx->numpy array
 images = idxtoarray('train-images')
 labels = idxtoarray('train-labels')
@@ -46,9 +51,10 @@ labels = idxtoarray('train-labels')
 test_images = idxtoarray('test-images')
 test_labels = idxtoarray('test-labels')
 
-# Turn images into 20x20
-images = numpy.array([a[4:-4, 4:-4] for a in images])
-test_images = numpy.array([a[4:-4, 4:-4] for a in test_images])
+# Turn images into 20x20.
+# Comment the lines below if you want to run with 28x28 images.
+images = reduce_image_size(images)
+test_images = reduce_image_size(test_images)
 
 model = GaussianNB()  # Gaussian Naive Bayes Classifier
 
