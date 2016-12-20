@@ -1,5 +1,6 @@
 import idx2numpy
 from sklearn.naive_bayes import GaussianNB
+import time
 
 
 def idxtoarray(filename):
@@ -12,7 +13,7 @@ def feed_machine(images, labels, model):
     image_size = len(images)
     images2d = images.reshape(image_size, -1)
     model.fit(images2d.tolist(), labels.tolist())
-    print "Fit action is completed."
+    print "Train action is completed."
 
 
 def predict_labels(images, model):
@@ -45,15 +46,26 @@ test_labels = idxtoarray('test-labels')
 
 model = GaussianNB()  # Gaussian Naive Bayes Classifier
 
+
+start_train = time.time()
 feed_machine(images, labels, model)  # Feed the model
+end_train = time.time()
+print "Training execution time:", (end_train-start_train), "seconds"
+
+start_test = time.time()
 predicted_results = predict_labels(test_images, model)  # Predict the test images
+end_test = time.time()
+print "Prediction execution time:", (end_test-start_test), "seconds"
+
 check_results(predicted_results, test_labels)  # Compare predictions with real values.
 
 
 """
 python naive_bayes.py
-Fit action is completed.
+Train action is completed.
+Training execution time: 8.29062891006 seconds
 Predict action is completed.
+Prediction execution time: 0.972679853439 seconds
 Number of images: 10000
 Number of right predictions: 5558
 """
