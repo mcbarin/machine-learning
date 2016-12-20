@@ -59,3 +59,15 @@ Number of images: 10000
 Number of right predictions: 7470
 Error Rate: %25.300000
 """
+
+"""
+When image file turned into 14x14
+
+Train action is completed.
+Training execution time: 1.69411993027 seconds
+Predict action is completed.
+Prediction execution time: 0.27223610878 seconds
+Number of images: 10000
+Number of right predictions: 8212
+Error Rate: %17.880000
+"""

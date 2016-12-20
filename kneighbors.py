@@ -105,3 +105,14 @@ Number of images: 10000
 Number of right predictions: 9701
 Error Rate: %2.990000
 """
+
+"""
+n_neighbors = 3  image size = 14x14
+Train action is completed.
+Training execution time: 16.6330990791 seconds
+Predict action is completed.
+Prediction execution time: 272.668379068 seconds
+Number of images: 10000
+Number of right predictions: 9599
+Error Rate: %4.010000
+"""
