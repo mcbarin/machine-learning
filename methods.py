@@ -1,3 +1,4 @@
+from __future__ import division
 import idx2numpy
 import numpy
 
@@ -34,6 +35,7 @@ def check_results(predicted, answers):
 
     print "Number of images: %d" % number_of_labels
     print "Number of right predictions: %d" % number_of_rights
+    print "Error Rate: %" + "%f" % ((number_of_labels-number_of_rights)*100/number_of_labels)
 
 
 def reduce_image_size(image_set):

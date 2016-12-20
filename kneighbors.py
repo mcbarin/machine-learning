@@ -43,6 +43,7 @@ Predict action is completed.
 Prediction execution time: 917.52027297 seconds
 Number of images: 10000
 Number of right predictions: 9705
+Error Rate: %2.95000
 """
 
 
@@ -56,4 +57,5 @@ Predict action is completed.
 Prediction execution time: 458.105105877 seconds
 Number of images: 10000
 Number of right predictions: 9719
+Error Rate: %2.81000
 """
