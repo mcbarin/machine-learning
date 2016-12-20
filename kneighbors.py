@@ -17,7 +17,7 @@ test_labels = idxtoarray('test-labels')
 images = reduce_image_size(images)
 test_images = reduce_image_size(test_images)
 
-model = KNeighborsClassifier(n_neighbors=5)
+model = KNeighborsClassifier(n_neighbors=3)
 
 
 start_train = time.time()
