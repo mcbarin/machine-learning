@@ -32,10 +32,15 @@ def check_results(predicted, answers):
     for index in range(0, number_of_labels):
         if predicted_list[index] == test_labels_list[index]:
             number_of_rights += 1
+    error_rate = ((number_of_labels-number_of_rights)*100/number_of_labels)
 
     print "Number of images: %d" % number_of_labels
     print "Number of right predictions: %d" % number_of_rights
-    print "Error Rate: %" + "%f" % ((number_of_labels-number_of_rights)*100/number_of_labels)
+    print "Error Rate: %" + "%f" % error_rate
+    return error_rate
+
+def check_overfitting(rate1, rate2):
+    print "Error Rate with 2-fold cross validation: %" + "%f" % ((rate1+rate2)/2)
 
 
 def reduce_image_size(image_set):
